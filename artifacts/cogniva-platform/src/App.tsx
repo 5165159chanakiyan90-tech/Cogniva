@@ -39,6 +39,7 @@ import { FacultyClassesView } from '@/components/FacultyClassesView';
 import { FacultyAttendanceManagementView } from '@/components/FacultyAttendanceManagementView';
 import { FacultyCgpaView } from '@/components/FacultyCgpaView';
 import { FacultyGradesManagementView } from '@/components/FacultyGradesManagementView';
+import { FacultyClassAnalyticsView } from '@/components/FacultyClassAnalyticsView';
 import {
   AdminHomeView,
   AcademicStructureView,
@@ -2968,8 +2969,7 @@ function AnalyticsPage({ role }: { role: Role }) {
     return <PageFrame><StudentAnalyticsView /></PageFrame>;
   }
 
-  const [range, setRange] = useState('Last 30 days');
-  return <PageFrame><div className="welcome-row"><div><div className="eyebrow">Faculty class analytics</div><h1>Turn class data into a better intervention.</h1><p className="lede">Compare sections, performance trends, grade distribution, and engagement.</p></div><div className="header-actions"><select className="select-compact" value={range} onChange={(event) => setRange(event.target.value)}><option>Last 30 days</option><option>Last 90 days</option><option>Semester to date</option></select><button className="button button-secondary"><Download size={15} />Export view</button></div></div><div className="metric-grid"><Metric label="Class average" value="78.6%" detail="+3.2 pts this term" trend="up" tone="teal" /><Metric label="Submission rate" value="91.4%" detail="+4.8% month on month" trend="up" tone="amber" /><Metric label="Pass rate" value="88.2%" detail="+2.4% from last exam" tone="violet" /><Metric label="Students needing review" value="18" detail="9.8% of cohort" trend="down" tone="coral" /></div><div className="analytics-grid"><section className="panel"><SectionHeading eyebrow="Movement over time" title="Performance by assessment" /><div className="big-chart"><div className="big-chart-value">78.6<span>%</span></div><div className="big-chart-sub">{range} Â· connected academic signals</div><svg viewBox="0 0 720 240"><path d="M0 195 C85 184 100 156 160 170 S245 135 300 145 S390 110 440 130 S525 75 580 91 S660 50 720 42" fill="none" stroke="#277681" strokeWidth="4" /><path d="M0 195 C85 184 100 156 160 170 S245 135 300 145 S390 110 440 130 S525 75 580 91 S660 50 720 42 L720 240 L0 240Z" fill="#277681" opacity=".09" /></svg><div className="chart-labels"><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span><span>Now</span></div></div></section><section className="panel"><SectionHeading eyebrow="Grade distribution" title="Where the class stands" /><div className="distribution-list">{[['A / Aâˆ’', '32%', 'teal'], ['B+ / B', '41%', 'amber'], ['C range', '19%', 'violet'], ['Needs review', '8%', 'coral']].map(([label, value, tone]) => <div className="distribution-row" key={label}><div><span>{label}</span><strong>{value}</strong></div><ProgressBar value={Number(value.replace('%', '')) * 2.2} color={tone as Tone} /></div>)}</div></section></div></PageFrame>;
+  return <FacultyClassAnalyticsView />;
 }
 
 function TimetablePage() {
