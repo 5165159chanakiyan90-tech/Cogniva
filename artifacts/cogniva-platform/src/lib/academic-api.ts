@@ -5933,7 +5933,7 @@ export async function getTodayClassSchedule(
       room_number: e.room_number,
       start_time: e.start_time,
       end_time: e.end_time,
-      period_number: e.period_number,
+      period_number: (e as any).period_number,
       section_name: e.section_name,
       status,
       status_label,
